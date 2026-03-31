@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TaxExit | Point to Point Capital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Manrope:wght@200;300;400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#e5e2da",
+              "inverse-primary": "#bad06f",
+              "surface-container-high": "#ebe8e0",
+              "secondary-fixed-dim": "#b9cac2",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#3a4a44",
+              "secondary": "#52625b",
+              "on-surface": "#1c1c17",
+              "primary-fixed": "#d5ed87",
+              "surface-container-highest": "#e5e2da",
+              "tertiary-fixed": "#d3e9ce",
+              "outline-variant": "#c4c8c0",
+              "tertiary-fixed-dim": "#b7ccb3",
+              "surface": "#fcf9f1",
+              "secondary-container": "#d5e7de",
+              "on-surface-variant": "#444842",
+              "primary-container": "#171e00",
+              "on-primary-fixed-variant": "#3d4c00",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#0e1f0f",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#fcf9f1",
+              "inverse-on-surface": "#f4f0e8",
+              "primary": "#000000",
+              "surface-container": "#f1eee6",
+              "on-secondary-container": "#586861",
+              "outline": "#747872",
+              "on-tertiary-container": "#758973",
+              "on-secondary": "#ffffff",
+              "on-tertiary-fixed-variant": "#394b38",
+              "surface-tint": "#53650d",
+              "surface-dim": "#dddad2",
+              "tertiary-container": "#0e1f0f",
+              "tertiary": "#000000",
+              "on-background": "#1c1c17",
+              "surface-container-low": "#f6f3eb",
+              "secondary-fixed": "#d5e7de",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#171e00",
+              "on-primary-container": "#788c33",
+              "primary-fixed-dim": "#bad06f",
+              "inverse-surface": "#31312b",
+              "on-secondary-fixed": "#0f1e19",
+              "background": "#fcf9f1"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Manrope', sans-serif; background-color: #fcf9f1; color: #1c1c17; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { backdrop-filter: blur(24px); background: rgba(252, 249, 241, 0.8); border: 1px solid rgba(255,255,255,0.5); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 20px 40px rgba(28,28,23,0.04); }
+        .kerning-premium { letter-spacing: 0.05em; }
+
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.12s; }
+        .reveal-delay-2 { transition-delay: 0.24s; }
+        .reveal-delay-3 { transition-delay: 0.36s; }
+
+        /* Button tactile states */
+        .btn-primary { transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(120, 140, 51, 0.22); }
+        .btn-primary:active { transform: scale(0.97) translateY(0); }
+
+        /* Shimmer sweep on primary CTA */
+        .btn-shimmer { position: relative; overflow: hidden; }
+        .btn-shimmer::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%); background-size: 200% 100%; animation: shimmer-sweep 3.5s ease-in-out infinite; }
+        @keyframes shimmer-sweep { 0% { background-position: -100% 0; } 100% { background-position: 200% 0; } }
+
+        /* Pulse dot */
+        @keyframes pulse-ring { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0; } }
+        .live-dot { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+        .live-dot::before { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; background: #788c33; animation: pulse-ring 2.2s ease-out infinite; }
+
+        /* Stat counter reveal */
+        @keyframes statFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .stat-item { opacity: 0; animation: statFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .stat-item:nth-child(1) { animation-delay: 0.1s; }
+        .stat-item:nth-child(2) { animation-delay: 0.2s; }
+        .stat-item:nth-child(3) { animation-delay: 0.3s; }
+        .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Sticky mobile CTA */
+        .sticky-cta { transform: translateY(110%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .sticky-cta.show { transform: translateY(0); }
+
+        /* Hover lift on cards */
+        .card-hover { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 32px 64px rgba(28,28,23,0.08); }
+    </style>
+</head>
+<body class="bg-surface selection:bg-on-primary-container selection:text-surface">
+
+<!-- Regulatory Banner -->
+<div class="fixed top-0 w-full z-[60] bg-[#2d3c26] text-white/60 py-2 px-8">
+<p class="text-center font-body text-[10px] tracking-wide">
+Point to Point Capital is an authorised Financial Services Provider 51761 &nbsp;&bull;&nbsp; 135 Daisy Street, Sandown, Sandton 2031 &nbsp;&bull;&nbsp; 010 109 5215
+</p>
+</div>
+
+<!-- TopNavBar -->
+<nav class="fixed top-8 w-full z-50 bg-[#fcf9f1]/80 dark:bg-[#1c1c17]/80 backdrop-blur-xl shadow-[0px_20px_40px_rgba(28,28,23,0.06)]">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#1c1c17] dark:text-[#fcf9f1] flex items-center gap-2">
+<img alt="Point to Point Capital Logo" class="h-12 w-auto" src="assets/PointPointLogo.png"/>
+</div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="font-['Plus_Jakarta_Sans'] tracking-wider uppercase text-sm font-light text-[#788c33] font-semibold border-b-2 border-[#788c33] pb-1 hover:opacity-100 transition-all duration-300" href="#">About</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-wider uppercase text-sm font-light text-[#1c1c17] dark:text-[#fcf9f1] opacity-70 hover:opacity-100 hover:text-[#788c33] transition-all duration-300" href="#process">Process</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-wider uppercase text-sm font-light text-[#1c1c17] dark:text-[#fcf9f1] opacity-70 hover:opacity-100 hover:text-[#788c33] transition-all duration-300" href="#pricing">Pricing</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-wider uppercase text-sm font-light text-[#1c1c17] dark:text-[#fcf9f1] opacity-70 hover:opacity-100 hover:text-[#788c33] transition-all duration-300" href="#contact">Contact</a>
+</div>
+<button class="btn-primary bg-on-primary-container text-surface-container-lowest px-6 py-2.5 rounded-full font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest font-bold shadow-lg shadow-on-primary-container/20">
+                Book a Call
+            </button>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative pt-44 pb-32 px-8 overflow-hidden">
+<div class="max-w-4xl mx-auto flex flex-col items-center text-center gap-8 z-10">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 bg-surface-container-high rounded-full">
+<span class="live-dot w-2 h-2 rounded-full bg-on-primary-container block flex-shrink-0"></span>
+<span class="font-label text-xs uppercase tracking-[0.2em] font-medium text-on-primary-fixed-variant">South African Emigration Specialists</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold text-on-surface leading-[1.08] tracking-tight">
+                    We help South Africans who've left formally exit the SARS tax system.
+                </h1>
+<p class="font-body text-xl md:text-2xl font-light text-on-surface-variant max-w-2xl leading-relaxed">
+                    A clean, official break from SARS. <span class="text-on-primary-container font-semibold italic">Flat R8,000. Once off. No percentage taken from your assets.</span>
+                </p>
+<p class="font-body text-xs text-outline/70 leading-relaxed max-w-2xl">Please note: This fee assumes all prior tax returns are fully up to date. Any outstanding tax submissions will be quoted and billed separately.</p>
+<div class="flex flex-col items-center gap-4 pt-2">
+<button class="btn-primary btn-shimmer bg-on-primary-container hover:bg-[#8da33f] text-surface-container-lowest px-10 py-5 rounded-full font-headline font-bold text-lg shadow-xl shadow-on-primary-container/10 flex items-center gap-3">
+                        Book a free clarity call
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="font-label text-sm text-outline tracking-wider flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary-container flex-shrink-0"></span>
+                        No obligation &bull; 15 minutes &bull; We'll tell you exactly what you need
+                    </p>
+</div>
+<!-- Social proof strip -->
+<div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 pt-6 border-t border-outline-variant/20 w-full">
+<div class="stat-item text-center">
+<p class="font-headline text-2xl font-black text-on-surface">240+</p>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Exits Processed</p>
+</div>
+<div class="w-px h-10 bg-outline-variant/30 hidden sm:block"></div>
+<div class="stat-item text-center">
+<p class="font-headline text-2xl font-black text-on-surface">22</p>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Countries</p>
+</div>
+<div class="w-px h-10 bg-outline-variant/30 hidden sm:block"></div>
+<div class="stat-item text-center">
+<p class="font-headline text-2xl font-black text-on-surface">~30 days</p>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">Avg. Completion</p>
+</div>
+<div class="w-px h-10 bg-outline-variant/30 hidden sm:block"></div>
+<div class="stat-item text-center">
+<p class="font-headline text-2xl font-black text-on-surface">R0</p>
+<p class="font-label text-[10px] uppercase tracking-widest text-outline">% Commission</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 -z-10 w-2/3 h-full bg-gradient-to-l from-surface-container-low to-transparent opacity-50"></div>
+</header>
+
+<!-- Dual VSL Section -->
+<section class="py-20 px-8 bg-surface-container-low">
+<div class="max-w-6xl mx-auto">
+<p class="text-center font-label text-xs uppercase tracking-[0.2em] text-outline mb-14 reveal">Choose your language — watch the full overview</p>
+<div class="grid md:grid-cols-2 gap-10 items-start">
+
+<!-- Afrikaans VSL -->
+<div class="flex flex-col items-center gap-5 reveal reveal-delay-1">
+<!-- Arrow + label -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-headline text-lg font-bold text-on-surface tracking-tight">Afrikaans</span>
+<svg width="24" height-="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-on-primary-container">
+<line x1="12" y1="0" x2="12" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<polyline points="6,18 12,26 18,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+</div>
+<div class="relative w-full aspect-video rounded-3xl overflow-hidden border-2 border-on-primary-container/20 shadow-2xl group cursor-pointer">
+<img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAIPFbA_Sh9E00RVzEkikxwc-yIZ4yfXat_5lXkFTWYugE9lEdKAxHY9m_qKhmQD9sTqc39SK7-R1G0wxxoVUGcyYjpXN3r7Za6rTFyAUZrRcqBsYzCs9o7V0pmHWpYZSO4MCHuoD37vaEE-zKx_TNrC5_Vh2NSJjuHf2d4sBLXJ5kYGYuJ8I8hXIYy6ddyAyQRdksCJotlcJ8tVlKhKzLCEv9VL9MVnjS0hzCeD-SbHBnovrM0wBVteb6_Kh9KFtobzws5j142Wk" alt="Afrikaans VSL thumbnail"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+<div class="w-20 h-20 rounded-full bg-on-primary-container flex items-center justify-center text-surface shadow-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<p class="font-headline text-base font-bold text-surface tracking-wider uppercase">Kyk die video</p>
+</div>
+</div>
+</div>
+
+<!-- English VSL -->
+<div class="flex flex-col items-center gap-5 reveal reveal-delay-2">
+<!-- Arrow + label -->
+<div class="flex flex-col items-center gap-1">
+<span class="font-headline text-lg font-bold text-on-surface tracking-tight">English</span>
+<svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-on-primary-container">
+<line x1="12" y1="0" x2="12" y2="24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<polyline points="6,18 12,26 18,18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+</div>
+<div class="relative w-full aspect-video rounded-3xl overflow-hidden border-2 border-on-primary-container/20 shadow-2xl group cursor-pointer">
+<img class="w-full h-full object-cover brightness-50 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAIPFbA_Sh9E00RVzEkikxwc-yIZ4yfXat_5lXkFTWYugE9lEdKAxHY9m_qKhmQD9sTqc39SK7-R1G0wxxoVUGcyYjpXN3r7Za6rTFyAUZrRcqBsYzCs9o7V0pmHWpYZSO4MCHuoD37vaEE-zKx_TNrC5_Vh2NSJjuHf2d4sBLXJ5kYGYuJ8I8hXIYy6ddyAyQRdksCJotlcJ8tVlKhKzLCEv9VL9MVnjS0hzCeD-SbHBnovrM0wBVteb6_Kh9KFtobzws5j142Wk" alt="English VSL thumbnail"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+<div class="w-20 h-20 rounded-full bg-on-primary-container flex items-center justify-center text-surface shadow-2xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<p class="font-headline text-base font-bold text-surface tracking-wider uppercase">Watch the video</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Three-Step Process -->
+<section id="process" class="py-32 px-8 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20 space-y-4 reveal">
+<p class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container font-medium">How It Works</p>
+<h2 class="font-headline text-4xl font-extrabold text-on-surface">Three steps. One outcome.</h2>
+<div class="w-20 h-1 bg-on-primary-container"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="glass-card card-hover p-10 rounded-3xl space-y-6 reveal reveal-delay-1">
+<div class="text-4xl font-headline font-black text-on-primary-container/20 tracking-tighter italic">01</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface">Book a clarity call.</h3>
+<p class="font-body text-lg font-light text-on-surface-variant leading-relaxed">
+                        Tell us your situation. We assess your case and give you a straight answer on what it takes to exit cleanly — at no cost.
+                    </p>
+<div class="pt-4 flex items-center gap-2 text-on-primary-container font-semibold">
+<span class="material-symbols-outlined">call</span>
+<span class="text-sm uppercase tracking-widest">Free 15-min session</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="glass-card card-hover p-10 rounded-3xl space-y-6 reveal reveal-delay-2">
+<div class="text-4xl font-headline font-black text-on-primary-container/20 tracking-tighter italic">02</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface">We handle everything.</h3>
+<p class="font-body text-lg font-light text-on-surface-variant leading-relaxed">
+                        Paperwork, e-Filing submission, SARS correspondence — all managed by our specialist team from start to finish.
+                    </p>
+<div class="pt-4 flex items-center gap-2 text-on-primary-container font-semibold">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm uppercase tracking-widest">End-to-end managed</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="glass-card card-hover p-10 rounded-3xl space-y-6 reveal reveal-delay-3">
+<div class="text-4xl font-headline font-black text-on-primary-container/20 tracking-tighter italic">03</div>
+<h3 class="font-headline text-2xl font-bold text-on-surface">You receive confirmation.</h3>
+<p class="font-body text-lg font-light text-on-surface-variant leading-relaxed">
+                        Your official cessation of tax residency is confirmed. Your financial ties to South Africa — formally and permanently concluded.
+                    </p>
+<div class="pt-4 flex items-center gap-2 text-on-primary-container font-semibold">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="text-sm uppercase tracking-widest">Officially concluded</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Educational Piece -->
+<section class="py-32 px-8 overflow-hidden">
+<div class="max-w-4xl mx-auto text-center space-y-12 reveal">
+<span class="material-symbols-outlined text-6xl text-on-primary-container">psychology_alt</span>
+<p class="font-headline text-3xl md:text-5xl font-light leading-snug text-on-surface italic">
+                "Since 2021, the formal process to update your tax residency has been streamlined — and is now completed <span class="font-bold not-italic border-b-4 border-on-primary-container/30">fully through SARS e-Filing.</span>"
+            </p>
+<p class="font-body text-lg text-on-surface-variant font-light max-w-2xl mx-auto">
+                The process is simpler and faster than it's ever been. What boutique consultancies once charged R25,000+ for is now a structured, efficient filing — if you know exactly what you're doing.
+            </p>
+<div class="h-12 w-px bg-outline-variant/30 mx-auto"></div>
+</div>
+</section>
+
+<!-- Pricing Comparison Blocks -->
+<section id="pricing" class="py-32 px-8 bg-surface-container-highest/30">
+<div class="max-w-5xl mx-auto">
+<div class="mb-16 reveal">
+<p class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container font-medium mb-3">Transparent Pricing</p>
+<h2 class="font-headline text-4xl font-extrabold text-on-surface">The old way. Our way.</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-8 items-stretch">
+<!-- Standard Consultancy -->
+<div class="bg-surface-container-high/50 p-12 rounded-3xl opacity-60 flex flex-col justify-between reveal reveal-delay-1">
+<div class="space-y-6">
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Legacy Providers</p>
+<h4 class="font-headline text-4xl font-bold text-on-surface-variant">R25,000 plus+</h4>
+<p class="font-body text-lg font-light text-on-surface-variant">Standard boutique consultancies still charge these inflated rates — often with a percentage of assets on top.</p>
+<ul class="space-y-3 pt-2">
+<li class="flex items-center gap-3 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-error text-sm">close</span>
+<span class="font-body text-sm">Percentage-based commission</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-error text-sm">close</span>
+<span class="font-body text-sm">Hidden disbursements</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-error text-sm">close</span>
+<span class="font-body text-sm">Slow turnaround</span>
+</li>
+</ul>
+</div>
+<div class="mt-12 flex items-center gap-2 text-error">
+<span class="material-symbols-outlined">cancel</span>
+<span class="text-xs uppercase tracking-widest font-bold">Outdated Model</span>
+</div>
+</div>
+<!-- TaxExit -->
+<div class="bg-primary-container p-12 rounded-3xl shadow-2xl relative overflow-hidden group reveal reveal-delay-2">
+<div class="absolute top-0 right-0 w-32 h-32 bg-on-primary-container/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
+<div class="space-y-6 relative z-10">
+<p class="font-label text-xs uppercase tracking-widest text-on-primary-container">Modern Efficiency</p>
+<h4 class="font-headline text-5xl font-black text-surface">R8,000</h4>
+<p class="font-body text-xl font-light text-surface/80">Flat. Fixed. Final. We updated our systems as SARS modernised — and passed every efficiency directly to you.</p>
+<div class="pt-6">
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-surface">
+<span class="material-symbols-outlined text-on-primary-container">check_circle</span>
+<span class="font-body text-sm font-medium">Flat fee — no percentage commission</span>
+</li>
+<li class="flex items-center gap-3 text-surface">
+<span class="material-symbols-outlined text-on-primary-container">check_circle</span>
+<span class="font-body text-sm font-medium">No hidden disbursements</span>
+</li>
+<li class="flex items-center gap-3 text-surface">
+<span class="material-symbols-outlined text-on-primary-container">check_circle</span>
+<span class="font-body text-sm font-medium">Average 30-day completion</span>
+</li>
+</ul>
+</div>
+<div class="pt-8">
+<button class="btn-primary w-full bg-on-primary-container hover:bg-[#8da33f] text-surface-container-lowest px-8 py-4 rounded-full font-headline font-bold text-base transition-all shadow-xl shadow-on-primary-container/20 flex items-center justify-center gap-3">
+                            Book my exit call
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="font-body text-xs text-surface/50 leading-relaxed mt-4">Please note: This fee assumes all prior tax returns are fully up to date. Any outstanding tax submissions will be quoted and billed separately.</p>
+</div>
+</div>
+</div>
+</div>
+<p class="text-center font-body text-sm text-outline mt-8 reveal">
+<span class="material-symbols-outlined align-middle text-sm mr-1">info</span>
+                Not sure if you qualify? We'll assess your situation on the call — at no charge.
+            </p>
+</div>
+</section>
+
+<!-- Partner Logos Bar -->
+<section class="py-10 px-8" style="background-color: #2d3c26;">
+<div class="max-w-7xl mx-auto">
+<p class="text-center font-label text-[10px] uppercase tracking-[0.3em] text-white/40 mb-8">We work with clients whose assets are held at</p>
+<img src="assets/partnerlogos.png" alt="Old Mutual, Access, Momentum, Ninety One, Sanlam" class="w-full max-w-4xl mx-auto block object-contain" style="max-height: 80px;"/>
+</div>
+</section>
+
+<!-- Trust Bar — Stats -->
+<section class="py-20 px-8 border-y border-outline-variant/10 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<p class="text-center font-label text-[10px] uppercase tracking-[0.3em] text-outline mb-16">Trusted by South African Expats Globally</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div class="reveal reveal-delay-1">
+<p class="font-headline text-4xl font-black text-on-surface">240+</p>
+<p class="font-body text-sm text-on-surface-variant font-light mt-2">Formal exits filed with SARS</p>
+</div>
+<div class="reveal reveal-delay-2">
+<p class="font-headline text-4xl font-black text-on-surface">22</p>
+<p class="font-body text-sm text-on-surface-variant font-light mt-2">Countries our clients live in</p>
+</div>
+<div class="reveal reveal-delay-3">
+<p class="font-headline text-4xl font-black text-on-surface">~30</p>
+<p class="font-body text-sm text-on-surface-variant font-light mt-2">Days average to completion</p>
+</div>
+<div class="reveal" style="transition-delay:0.48s">
+<p class="font-headline text-4xl font-black text-on-surface">R0</p>
+<p class="font-body text-sm text-on-surface-variant font-light mt-2">Percentage commission charged</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Testimonial -->
+<section class="py-24 px-8">
+<div class="max-w-3xl mx-auto text-center space-y-8 reveal">
+<div class="flex justify-center gap-1 text-on-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-headline text-2xl md:text-3xl font-light text-on-surface italic leading-snug">
+"I'd been putting this off for two years thinking it would be complicated. From first call to official SARS confirmation took 28 days. The flat fee was a third of what everyone else quoted me."
+</blockquote>
+<div>
+<p class="font-body text-sm font-semibold text-on-surface">M. van der Berg</p>
+<p class="font-label text-xs text-outline uppercase tracking-widest">Cape Town-born · Now based in Amsterdam</p>
+</div>
+</div>
+</section>
+
+<!-- Final CTA -->
+<section id="contact" class="py-40 px-8">
+<div class="max-w-4xl mx-auto text-center bg-surface-container p-20 rounded-[3rem] space-y-10 shadow-sm border border-white reveal">
+<p class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container font-medium">Take the final step</p>
+<h2 class="font-headline text-4xl md:text-5xl font-bold text-on-surface leading-tight">Stop being a South African tax resident. Formally.</h2>
+<p class="font-body text-xl text-on-surface-variant font-light max-w-xl mx-auto">The call is free. If you don't qualify, we'll tell you upfront — honestly and at no cost to you.</p>
+<button class="btn-primary btn-shimmer bg-on-primary-container hover:bg-[#8da33f] text-surface-container-lowest px-12 py-6 rounded-full font-headline font-extrabold text-xl shadow-xl shadow-on-primary-container/10 inline-flex items-center gap-4">
+                Start my official SARS exit
+                <span class="material-symbols-outlined">payments</span>
+</button>
+<p class="font-label text-xs text-outline tracking-wider">
+<span class="material-symbols-outlined align-middle text-sm mr-1">shield</span>
+                No obligation &bull; 15 minutes &bull; Your exit, on your timeline
+            </p>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#f1eee6] dark:bg-[#171e00] w-full pt-20 pb-10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto gap-8">
+<div class="text-lg font-black text-[#1c1c17] dark:text-[#fcf9f1] flex items-center gap-2">
+<img alt="Point to Point Capital Logo" class="h-10 w-auto" src="assets/PointPointLogo.png"/>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Manrope'] text-xs font-light tracking-widest uppercase text-[#1c1c17]/60 dark:text-[#fcf9f1]/60 hover:text-[#788c33] transition-colors duration-200" href="#">Privacy Policy</a>
+<a class="font-['Manrope'] text-xs font-light tracking-widest uppercase text-[#1c1c17]/60 dark:text-[#fcf9f1]/60 hover:text-[#788c33] transition-colors duration-200" href="#">Terms of Service</a>
+<a class="font-['Manrope'] text-xs font-light tracking-widest uppercase text-[#1c1c17]/60 dark:text-[#fcf9f1]/60 hover:text-[#788c33] transition-colors duration-200" href="#">Financial Disclosures</a>
+<a class="font-['Manrope'] text-xs font-light tracking-widest uppercase text-[#1c1c17]/60 dark:text-[#fcf9f1]/60 hover:text-[#788c33] transition-colors duration-200" href="#">Regulatory Info</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 mt-12 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-['Manrope'] text-xs font-light tracking-widest uppercase text-[#1c1c17]/40 dark:text-[#fcf9f1]/40">
+                © 2026 Point-to-Point Capital, all rights reserved
+            </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface/20">shield_person</span>
+<span class="material-symbols-outlined text-on-surface/20">lock</span>
+<span class="material-symbols-outlined text-on-surface/20">language</span>
+</div>
+</div>
+</footer>
+
+<!-- Sticky Mobile CTA -->
+<div class="sticky-cta fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#fcf9f1]/95 backdrop-blur-xl border-t border-outline-variant/20 p-4 shadow-[0_-8px_32px_rgba(28,28,23,0.08)]" id="mobileCta">
+<button class="btn-primary btn-shimmer w-full bg-on-primary-container text-surface-container-lowest py-4 rounded-full font-headline font-bold text-base flex items-center justify-center gap-2">
+    Book a free clarity call
+    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Sticky mobile CTA — shows after scrolling past hero
+  const mobileCta = document.getElementById('mobileCta');
+  const heroEnd = document.querySelector('header').offsetTop + document.querySelector('header').offsetHeight;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > heroEnd * 0.6) {
+      mobileCta.classList.add('show');
+    } else {
+      mobileCta.classList.remove('show');
+    }
+  }, { passive: true });
+</script>
+</body></html>
