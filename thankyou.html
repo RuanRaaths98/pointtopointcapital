@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thank You | Point to Point Capital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Manrope:wght@200;300;400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary": "#ffffff",
+          "surface-variant": "#e5e2da",
+          "inverse-primary": "#bad06f",
+          "surface-container-high": "#ebe8e0",
+          "secondary-fixed-dim": "#b9cac2",
+          "on-primary": "#ffffff",
+          "on-secondary-fixed-variant": "#3a4a44",
+          "secondary": "#52625b",
+          "on-surface": "#1c1c17",
+          "primary-fixed": "#d5ed87",
+          "surface-container-highest": "#e5e2da",
+          "tertiary-fixed": "#d3e9ce",
+          "outline-variant": "#c4c8c0",
+          "tertiary-fixed-dim": "#b7ccb3",
+          "surface": "#fcf9f1",
+          "secondary-container": "#d5e7de",
+          "on-surface-variant": "#444842",
+          "primary-container": "#171e00",
+          "on-primary-fixed-variant": "#3d4c00",
+          "error": "#ba1a1a",
+          "error-container": "#ffdad6",
+          "on-tertiary-fixed": "#0e1f0f",
+          "on-error": "#ffffff",
+          "surface-container-lowest": "#ffffff",
+          "surface-bright": "#fcf9f1",
+          "inverse-on-surface": "#f4f0e8",
+          "primary": "#000000",
+          "surface-container": "#f1eee6",
+          "on-secondary-container": "#586861",
+          "outline": "#747872",
+          "on-tertiary-container": "#758973",
+          "on-secondary": "#ffffff",
+          "on-tertiary-fixed-variant": "#394b38",
+          "surface-tint": "#53650d",
+          "surface-dim": "#dddad2",
+          "tertiary-container": "#0e1f0f",
+          "tertiary": "#000000",
+          "on-background": "#1c1c17",
+          "surface-container-low": "#f6f3eb",
+          "secondary-fixed": "#d5e7de",
+          "on-error-container": "#93000a",
+          "on-primary-fixed": "#171e00",
+          "on-primary-container": "#788c33",
+          "primary-fixed-dim": "#bad06f",
+          "inverse-surface": "#31312b",
+          "on-secondary-fixed": "#0f1e19",
+          "background": "#fcf9f1"
+        },
+        fontFamily: {
+          "headline": ["Plus Jakarta Sans"],
+          "body": ["Manrope"],
+          "label": ["Manrope"]
+        },
+        borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+      },
+    },
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Manrope', sans-serif; background-color: #fcf9f1; color: #1c1c17; -webkit-font-smoothing: antialiased; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .fade-up-2 { animation: fade-up 0.7s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .fade-up-3 { animation: fade-up 0.7s 0.24s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes check-pop { 0% { transform: scale(0.6); opacity: 0; } 70% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+  .check-pop { animation: check-pop 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+  <a href="index.html">
+    <img alt="Point to Point Capital Logo" class="h-8 w-auto" src="assets/PointPointLogo.png"/>
+  </a>
+  <a href="index.html" class="font-label text-xs uppercase tracking-[0.2em] font-medium text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-1.5">
+    <span class="material-symbols-outlined text-base">arrow_back</span>
+    Back to site
+  </a>
+</nav>
+
+<!-- Main -->
+<main class="flex-1 flex items-center justify-center px-8 pt-32 pb-20">
+  <div class="max-w-lg w-full text-center space-y-8">
+
+    <!-- Check icon -->
+    <div class="check-pop mx-auto w-24 h-24 rounded-full bg-on-primary-container/10 flex items-center justify-center">
+      <span class="material-symbols-outlined text-5xl text-on-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+    </div>
+
+    <!-- Copy -->
+    <div class="space-y-4 fade-up">
+      <p class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container font-medium">You're all set</p>
+      <h1 class="font-headline text-4xl md:text-5xl font-bold text-on-surface leading-tight">Thank you for reaching out.</h1>
+      <p class="font-body text-lg text-on-surface-variant font-light leading-relaxed max-w-md mx-auto">We've received your details and will be in touch within one business day to schedule your free clarity call.</p>
+    </div>
+
+    <!-- What happens next -->
+    <div class="fade-up-2 bg-surface-container rounded-3xl p-8 text-left space-y-5">
+      <p class="font-label text-xs uppercase tracking-[0.2em] text-on-primary-container font-medium">What happens next</p>
+      <div class="space-y-4">
+        <div class="flex items-start gap-4">
+          <div class="w-7 h-7 rounded-full bg-on-primary-container/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="font-headline text-xs font-black text-on-primary-container">1</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface">We review your details</p>
+            <p class="font-body text-sm text-on-surface-variant font-light">Our team looks at your situation before the call so we can give you a straight answer immediately.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-7 h-7 rounded-full bg-on-primary-container/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="font-headline text-xs font-black text-on-primary-container">2</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface">We call you within one business day</p>
+            <p class="font-body text-sm text-on-surface-variant font-light">A 15-minute clarity call — no pressure, no obligation.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-7 h-7 rounded-full bg-on-primary-container/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span class="font-headline text-xs font-black text-on-primary-container">3</span>
+          </div>
+          <div>
+            <p class="font-body text-sm font-semibold text-on-surface">You decide — no hard sell</p>
+            <p class="font-body text-sm text-on-surface-variant font-light">If you qualify and want to proceed, we'll walk you through the next steps. If not, we'll tell you honestly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back link -->
+    <div class="fade-up-3">
+      <a href="index.html" class="font-label text-sm text-outline hover:text-on-surface tracking-wider transition-colors">
+        ← Back to the site
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="py-6 px-8 border-t border-outline-variant/20 text-center">
+  <p class="font-label text-xs text-outline/50 tracking-wider uppercase">© 2026 Point-to-Point Capital, all rights reserved</p>
+</footer>
+
+</body>
+</html>
