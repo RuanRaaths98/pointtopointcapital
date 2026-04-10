@@ -590,8 +590,9 @@ I want my free call with you
     document.body.style.overflow = '';
   }
 
-  // Open modal on all btn-primary clicks and #contact links
+  // Open modal on all btn-primary clicks and #contact links (excluding the form's submit button)
   document.querySelectorAll('.btn-primary, a[href="#contact"]').forEach(el => {
+    if (el.closest('#contactForm')) return;
     el.addEventListener('click', e => {
       e.preventDefault();
       openModal();
