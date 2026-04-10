@@ -461,7 +461,8 @@ I want my free call with you
       <p class="font-body text-sm text-on-surface-variant font-light">No obligation. 15 minutes. We'll tell you exactly where you stand.</p>
     </div>
     <!-- Form -->
-    <form id="contactForm" class="space-y-4" novalidate>
+    <form id="contactForm" class="space-y-4" action="https://formspree.io/f/mwvwdqwe" method="POST">
+      <input type="hidden" name="_next" value="https://pointtopointcapital.vercel.app/thankyou"/>
       <div class="grid grid-cols-2 gap-4">
         <div class="space-y-1">
           <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="firstName">First name</label>
@@ -610,10 +611,5 @@ I want my free call with you
     document.getElementById('countryPlanning').required = val === 'no';
   });
 
-  // Form submission (replace with your backend/Formspree endpoint)
-  contactForm.addEventListener('submit', e => {
-    e.preventDefault();
-    window.location.href = 'thankyou.html';
-  });
 </script>
 </body></html>
