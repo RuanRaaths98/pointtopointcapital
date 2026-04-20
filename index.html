@@ -472,7 +472,8 @@ I want my free call with you
       <p class="font-body text-sm text-on-surface-variant font-light">No obligation. 15 minutes. We'll tell you exactly where you stand.</p>
     </div>
     <!-- Form -->
-    <form id="contactForm" class="space-y-4">
+    <form id="contactForm" class="space-y-4" action="https://formspree.io/f/mwvwdqwe" method="POST">
+      <input type="hidden" name="_next" value="https://tax.point-point.co.za/thankyou"/>
       <!-- Honeypot — bots fill this, Formspree ignores it, humans don't see it -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="grid grid-cols-2 gap-4">
@@ -635,48 +636,19 @@ I want my free call with you
     document.getElementById('countryPlanning').required = val === 'no';
   });
 
-  // AJAX submission to Formspree with Turnstile + honeypot checks
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
+  // Block submission if Turnstile not completed
+  contactForm.addEventListener('submit', function(e) {
     const errorEl = document.getElementById('contactFormError');
     const errorText = document.getElementById('contactFormErrorText');
-    const submitBtn = document.getElementById('contactSubmitBtn');
-    const submitLabel = document.getElementById('contactSubmitLabel');
-
-    // Honeypot check
-    if (contactForm._gotcha && contactForm._gotcha.value) return;
-
-    // Turnstile token check
     const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]');
     if (!turnstileToken || !turnstileToken.value) {
-      errorText.textContent = 'Please complete the security check.';
+      e.preventDefault();
+      errorText.textContent = 'Please complete the security check before submitting.';
       errorEl.classList.remove('hidden');
       return;
     }
     errorEl.classList.add('hidden');
-
-    submitBtn.disabled = true;
-    submitLabel.textContent = 'Sending…';
-
-    try {
-      const res = await fetch('https://formspree.io/f/mwvwdqwe', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(contactForm)
-      });
-      const json = await res.json();
-      if (res.ok) {
-        contactForm.classList.add('hidden');
-        formSuccess.classList.remove('hidden');
-      } else {
-        throw new Error((json.errors || []).map(e => e.message).join(', ') || 'Submission failed');
-      }
-    } catch (err) {
-      errorText.textContent = 'Something went wrong — please try again.';
-      errorEl.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitLabel.textContent = 'Book my free call';
-    }
+    // Native POST proceeds — Formspree redirects to /thankyou
   });
 
 </script>
