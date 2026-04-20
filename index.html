@@ -552,14 +552,185 @@ I want my free call with you
 
 <!-- Sticky Mobile CTA -->
 <div class="sticky-cta fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#fcf9f1]/95 backdrop-blur-xl border-t border-outline-variant/20 p-4 shadow-[0_-8px_32px_rgba(28,28,23,0.08)]" id="mobileCta">
-<button class="btn-primary btn-shimmer w-full bg-on-primary-container text-surface-container-lowest py-4 rounded-full font-headline font-bold text-base flex items-center justify-center gap-2">
+<button onclick="openModal()" class="btn-primary btn-shimmer w-full bg-on-primary-container text-surface-container-lowest py-4 rounded-full font-headline font-bold text-base flex items-center justify-center gap-2">
     Book a free clarity call
     <span class="material-symbols-outlined">arrow_forward</span>
 </button>
 </div>
 
+<!-- Booking Modal -->
+<div id="bookingModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <!-- Backdrop -->
+  <div onclick="closeModal()" class="absolute inset-0 bg-[#1c1c17]/60 backdrop-blur-sm"></div>
+  <!-- Panel -->
+  <div class="relative w-full max-w-lg bg-[#fcf9f1] rounded-3xl shadow-2xl p-10 space-y-6 max-h-[90vh] overflow-y-auto">
+    <!-- Close -->
+    <button onclick="closeModal()" class="absolute top-6 right-6 text-on-surface/40 hover:text-on-surface transition-colors">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <!-- Header -->
+    <div class="space-y-1">
+      <p class="font-label text-[10px] uppercase tracking-[0.2em] text-on-primary-container font-medium">Free 15-minute call</p>
+      <h2 id="modalTitle" class="font-headline text-2xl font-bold text-on-surface">Book your clarity call</h2>
+      <p class="font-body text-sm text-on-surface-variant font-light">Tell us your situation — we'll tell you exactly what your exit requires.</p>
+    </div>
+
+    <!-- Form -->
+    <form id="bookingForm" class="space-y-4" novalidate>
+      <!-- Web3Forms access key — get yours free at web3forms.com -->
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY"/>
+      <input type="hidden" name="subject" value="New Clarity Call Request — TaxExit"/>
+      <input type="hidden" name="from_name" value="TaxExit Landing Page"/>
+      <!-- Honeypot — bots fill this, humans don't -->
+      <input type="text" name="botcheck" class="hidden" tabindex="-1" autocomplete="off"/>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="col-span-2 sm:col-span-1 space-y-1.5">
+          <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" for="firstName">First name</label>
+          <input id="firstName" name="first_name" type="text" required autocomplete="given-name"
+            class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container transition-colors placeholder:text-outline/50"
+            placeholder="Ruan"/>
+        </div>
+        <div class="col-span-2 sm:col-span-1 space-y-1.5">
+          <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" for="lastName">Last name</label>
+          <input id="lastName" name="last_name" type="text" required autocomplete="family-name"
+            class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container transition-colors placeholder:text-outline/50"
+            placeholder="van der Berg"/>
+        </div>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" for="email">Email address</label>
+        <input id="email" name="email" type="email" required autocomplete="email"
+          class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container transition-colors placeholder:text-outline/50"
+          placeholder="ruan@example.com"/>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" for="phone">Phone / WhatsApp</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel"
+          class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container transition-colors placeholder:text-outline/50"
+          placeholder="+31 6 12345678"/>
+      </div>
+
+      <div class="space-y-1.5">
+        <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" for="country">Country you now live in</label>
+        <input id="country" name="country" type="text" autocomplete="country-name"
+          class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container transition-colors placeholder:text-outline/50"
+          placeholder="Netherlands"/>
+      </div>
+
+      <!-- Cloudflare Turnstile — get your free site key at dash.cloudflare.com → Turnstile -->
+      <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-theme="light"></div>
+
+      <!-- Error message -->
+      <p id="formError" class="hidden font-body text-xs text-error flex items-center gap-1">
+        <span class="material-symbols-outlined text-sm">error</span>
+        <span id="formErrorText">Please complete all required fields.</span>
+      </p>
+
+      <button type="submit" id="submitBtn"
+        class="btn-primary btn-shimmer w-full bg-on-primary-container hover:bg-[#8da33f] text-surface-container-lowest py-4 rounded-full font-headline font-bold text-base flex items-center justify-center gap-2 transition-all">
+        <span id="submitLabel">Request my clarity call</span>
+        <span class="material-symbols-outlined" id="submitIcon">arrow_forward</span>
+      </button>
+
+      <p class="font-label text-[10px] text-outline text-center tracking-wide">No obligation &bull; We respond within 1 business day</p>
+    </form>
+
+    <!-- Success state -->
+    <div id="formSuccess" class="hidden text-center space-y-4 py-6">
+      <div class="w-16 h-16 rounded-full bg-on-primary-container/10 flex items-center justify-center mx-auto">
+        <span class="material-symbols-outlined text-3xl text-on-primary-container" style="font-variation-settings:'FILL' 1;">check_circle</span>
+      </div>
+      <h3 class="font-headline text-xl font-bold text-on-surface">You're on the list.</h3>
+      <p class="font-body text-sm text-on-surface-variant font-light">We'll be in touch within one business day to confirm your call time.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cloudflare Turnstile script -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script>
-  // Scroll reveal
+  // ── Modal ──────────────────────────────────────────────
+  function openModal() {
+    document.getElementById('bookingModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('bookingModal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Wire every booking CTA button to open the modal
+  document.querySelectorAll('button').forEach(btn => {
+    const text = btn.textContent.trim().toLowerCase();
+    if (text.includes('book') || text.includes('call') || text.includes('exit') || text.includes('start')) {
+      btn.addEventListener('click', openModal);
+    }
+  });
+
+  // ── Form submission ────────────────────────────────────
+  document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const errorEl = document.getElementById('formError');
+    const errorText = document.getElementById('formErrorText');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitLabel = document.getElementById('submitLabel');
+    const submitIcon = document.getElementById('submitIcon');
+
+    // Honeypot check
+    if (form.botcheck.value) return;
+
+    // Basic required field validation
+    const required = ['first_name', 'last_name', 'email'];
+    for (const name of required) {
+      if (!form[name].value.trim()) {
+        errorText.textContent = 'Please fill in your name and email.';
+        errorEl.classList.remove('hidden');
+        return;
+      }
+    }
+    errorEl.classList.add('hidden');
+
+    // Turnstile token check
+    const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]');
+    if (!turnstileResponse || !turnstileResponse.value) {
+      errorText.textContent = 'Please complete the security check.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    // Submit loading state
+    submitBtn.disabled = true;
+    submitLabel.textContent = 'Sending…';
+    submitIcon.textContent = 'hourglass_empty';
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+
+      if (json.success) {
+        form.classList.add('hidden');
+        document.getElementById('formSuccess').classList.remove('hidden');
+      } else {
+        throw new Error(json.message || 'Submission failed');
+      }
+    } catch (err) {
+      errorText.textContent = 'Something went wrong — please try again or email us directly.';
+      errorEl.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitLabel.textContent = 'Request my clarity call';
+      submitIcon.textContent = 'arrow_forward';
+    }
+  });
+
+  // ── Scroll reveal ──────────────────────────────────────
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -571,7 +742,7 @@ I want my free call with you
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
 
-  // Sticky mobile CTA — shows after scrolling past hero
+  // ── Sticky mobile CTA ──────────────────────────────────
   const mobileCta = document.getElementById('mobileCta');
   const heroEnd = document.querySelector('header').offsetTop + document.querySelector('header').offsetHeight;
   window.addEventListener('scroll', () => {
