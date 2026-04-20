@@ -472,8 +472,7 @@ I want my free call with you
       <p class="font-body text-sm text-on-surface-variant font-light">No obligation. 15 minutes. We'll tell you exactly where you stand.</p>
     </div>
     <!-- Form -->
-    <form id="contactForm" class="space-y-4" action="https://formspree.io/f/mwvwdqwe" method="POST">
-      <input type="hidden" name="_next" value="https://tax.point-point.co.za/thankyou"/>
+    <form id="contactForm" class="space-y-4" action="/api/submit" method="POST">
       <!-- Honeypot — bots fill this, Formspree ignores it, humans don't see it -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="grid grid-cols-2 gap-4">
