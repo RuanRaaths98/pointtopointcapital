@@ -175,7 +175,7 @@ Point to Point Capital is an authorised Financial Services Provider 51761 &nbsp;
 <header class="relative pt-44 pb-32 px-8 overflow-hidden">
 <div class="max-w-4xl mx-auto flex flex-col items-center text-center gap-8 z-10">
 <h1 class="font-headline text-5xl md:text-7xl font-bold text-on-surface leading-[1.08] tracking-tight">
-                    We help South Africans who've left the country formally exit the SARS tax system.
+                    Still filing tax in South Africa after moving overseas? Let's fix that.
                 </h1>
 <p class="font-body text-xl md:text-2xl font-light text-on-surface-variant max-w-2xl leading-relaxed">
                     A clean, official break from SARS. <span class="text-on-primary-container font-semibold italic">Flat R8,000. Once off. No percentage taken from your assets.</span>
@@ -494,7 +494,7 @@ I want my free call with you
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
       <div class="grid grid-cols-2 gap-4">
         <div class="space-y-1">
-          <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="firstName">First name</label>
+          <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="firstName">Name</label>
           <input id="firstName" name="firstName" type="text" required placeholder="Ruan" class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline/50 border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition"/>
         </div>
         <div class="space-y-1">
@@ -503,24 +503,26 @@ I want my free call with you
         </div>
       </div>
       <div class="space-y-1">
-        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="email">Email address</label>
+        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="email">Email</label>
         <input id="email" name="email" type="email" required placeholder="you@example.com" class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline/50 border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition"/>
       </div>
-      <div class="space-y-1">
-        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="phone">Cell phone number</label>
-        <input id="phone" name="phone" type="tel" required placeholder="+27 82 000 0000" class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface placeholder:text-outline/50 border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition"/>
+
+      <div class="space-y-2">
+        <p class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider">Have you already left SA?</p>
+        <div class="flex gap-4">
+          <label class="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-surface-container border border-outline-variant/40 rounded-xl px-4 py-3 transition has-[:checked]:border-on-primary-container has-[:checked]:bg-on-primary-container/10">
+            <input type="radio" id="leftSAYes" name="leftSA" value="Yes" required class="accent-on-primary-container cursor-pointer"/>
+            <span class="font-body text-sm text-on-surface">Yes</span>
+          </label>
+          <label class="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-surface-container border border-outline-variant/40 rounded-xl px-4 py-3 transition has-[:checked]:border-on-primary-container has-[:checked]:bg-on-primary-container/10">
+            <input type="radio" id="leftSANo" name="leftSA" value="No" class="accent-on-primary-container cursor-pointer"/>
+            <span class="font-body text-sm text-on-surface">No</span>
+          </label>
+        </div>
       </div>
-      <div class="space-y-1">
-        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="leftSA">Have you left South Africa?</label>
-        <select id="leftSA" name="leftSA" required class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition appearance-none cursor-pointer">
-          <option value="" disabled selected>Select an option</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </div>
-      <!-- Shown when already left -->
-      <div id="fieldAlreadyLeft" class="space-y-1 hidden">
-        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="countryLeft">Which country are you living in now?</label>
+      <!-- Shown when already left SA -->
+      <div id="fieldCountry" class="space-y-1 hidden">
+        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="countryLeft">Country residing in now</label>
         <select id="countryLeft" name="countryLeft" class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition appearance-none cursor-pointer">
           <option value="" disabled selected>Select country</option>
           <optgroup label="Most Common">
@@ -534,50 +536,6 @@ I want my free call with you
             <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belize</option><option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cambodia</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option><option>Comoros</option><option>Congo</option><option>Costa Rica</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czech Republic</option><option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option><option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Eswatini</option><option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Israel</option><option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kuwait</option><option>Kyrgyzstan</option><option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Mauritania</option><option>Mexico</option><option>Micronesia</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option><option>Namibia</option><option>Nauru</option><option>Nepal</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option><option>North Macedonia</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palau</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option><option>Suriname</option><option>Sweden</option><option>Syria</option><option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option><option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Turkey</option><option>Turkmenistan</option><option>Tuvalu</option><option>Uganda</option><option>Ukraine</option><option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
           </optgroup>
         </select>
-      </div>
-      <!-- Shown when planning to leave -->
-      <div id="fieldPlanning" class="space-y-1 hidden">
-        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="countryPlanning">Which country are you planning to move to?</label>
-        <select id="countryPlanning" name="countryPlanning" class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition appearance-none cursor-pointer">
-          <option value="" disabled selected>Select country</option>
-          <optgroup label="Most Common">
-            <option>Australia</option><option>United Kingdom</option><option>Netherlands</option>
-            <option>New Zealand</option><option>Canada</option><option>United States</option>
-            <option>United Arab Emirates</option><option>Germany</option><option>Portugal</option>
-            <option>Switzerland</option><option>Ireland</option><option>Singapore</option>
-            <option>Belgium</option><option>France</option><option>Mauritius</option>
-          </optgroup>
-          <optgroup label="All Countries">
-            <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belize</option><option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cambodia</option><option>Cameroon</option><option>Central African Republic</option><option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option><option>Comoros</option><option>Congo</option><option>Costa Rica</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czech Republic</option><option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option><option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option><option>Eswatini</option><option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option><option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Israel</option><option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kuwait</option><option>Kyrgyzstan</option><option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option><option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option><option>Marshall Islands</option><option>Mauritania</option><option>Mexico</option><option>Micronesia</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option><option>Namibia</option><option>Nauru</option><option>Nepal</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option><option>North Macedonia</option><option>Norway</option><option>Oman</option><option>Pakistan</option><option>Palau</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Qatar</option><option>Romania</option><option>Russia</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sweden</option><option>Syria</option><option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option><option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Turkey</option><option>Turkmenistan</option><option>Tuvalu</option><option>Uganda</option><option>Ukraine</option><option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option><option>Vatican City</option><option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="space-y-1">
-        <label class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider" for="assetValue">Estimated value of funds/assets to move or recover?</label>
-        <select id="assetValue" name="assetValue" required class="w-full bg-surface-container rounded-xl px-4 py-3 font-body text-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-on-primary-container focus:ring-1 focus:ring-on-primary-container transition appearance-none cursor-pointer">
-          <option value="" disabled selected>Select a range</option>
-          <option value="Under R250k">Under R250k</option>
-          <option value="R250k - R1m">R250k – R1m</option>
-          <option value="R1m+">R1m+</option>
-        </select>
-      </div>
-      <div class="space-y-2">
-        <p class="font-label text-xs font-medium text-on-surface-variant uppercase tracking-wider">Where did you hear from us?</p>
-        <div class="flex flex-col gap-2">
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" name="referral" value="Facebook" class="w-4 h-4 rounded border-outline-variant/40 text-on-primary-container focus:ring-on-primary-container focus:ring-1 bg-surface-container cursor-pointer"/>
-            <span class="font-body text-sm text-on-surface">Facebook</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" name="referral" value="Google" class="w-4 h-4 rounded border-outline-variant/40 text-on-primary-container focus:ring-on-primary-container focus:ring-1 bg-surface-container cursor-pointer"/>
-            <span class="font-body text-sm text-on-surface">Google</span>
-          </label>
-          <label class="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" name="referral" value="Word of mouth" class="w-4 h-4 rounded border-outline-variant/40 text-on-primary-container focus:ring-on-primary-container focus:ring-1 bg-surface-container cursor-pointer"/>
-            <span class="font-body text-sm text-on-surface">Word of mouth</span>
-          </label>
-        </div>
-      </div>
 
       <!-- Cloudflare Turnstile — replace YOUR_TURNSTILE_SITE_KEY at dash.cloudflare.com → Turnstile (free) -->
       <div class="cf-turnstile" data-sitekey="0x4AAAAAAC_9CQtQC_XZOiCd" data-theme="light"></div>
@@ -666,9 +624,7 @@ I want my free call with you
   const modal = document.getElementById('contactModal');
   const modalClose = document.getElementById('modalClose');
   const modalBackdrop = document.getElementById('modalBackdrop');
-  const leftSASelect = document.getElementById('leftSA');
-  const fieldAlreadyLeft = document.getElementById('fieldAlreadyLeft');
-  const fieldPlanning = document.getElementById('fieldPlanning');
+  const fieldCountry = document.getElementById('fieldCountry');
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
@@ -694,13 +650,13 @@ I want my free call with you
   modalBackdrop.addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-  // Conditional country fields
-  leftSASelect.addEventListener('change', () => {
-    const val = leftSASelect.value;
-    fieldAlreadyLeft.classList.toggle('hidden', val !== 'yes');
-    fieldPlanning.classList.toggle('hidden', val !== 'no');
-    document.getElementById('countryLeft').required = val === 'yes';
-    document.getElementById('countryPlanning').required = val === 'no';
+  // Show country field when "Yes" is selected
+  document.querySelectorAll('input[name="leftSA"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const isYes = document.getElementById('leftSAYes').checked;
+      fieldCountry.classList.toggle('hidden', !isYes);
+      document.getElementById('countryLeft').required = isYes;
+    });
   });
 
   // Validation + bot checks before native POST
@@ -720,16 +676,7 @@ I want my free call with you
       return;
     }
 
-    // 2. Phone validation — strip non-digits, require 7+ digits, reject all-same-digit
-    const rawPhone = (contactForm.phone.value || '').replace(/\D/g, '');
-    if (rawPhone.length < 7) {
-      return block('Please enter a valid phone number (at least 7 digits).');
-    }
-    if (/^(\d)\1+$/.test(rawPhone)) {
-      return block('Please enter a valid phone number.');
-    }
-
-    // 3. Turnstile check
+    // 2. Turnstile check
     const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]');
     if (!turnstileToken || !turnstileToken.value) {
       return block('Please complete the security check before submitting.');
